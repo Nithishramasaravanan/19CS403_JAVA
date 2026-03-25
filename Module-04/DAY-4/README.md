@@ -1,25 +1,62 @@
-# Ex.No:4(D) FINAL & STATIC IN JAVA
+# Ex.No:4(C)  COMPOSITION IN JAVA
+
+## QUESTION:
+You are developing a YouTube-like platform. Each channel can have multiple subscribers (viewers).
+
+Whenever the channel uploads a new video, it must instantly notify all of its subscribers.
+
+Each subscriber prints their own message like:
+
+"[SubscriberName]: New video from [ChannelName]! Watching now..."
+
+The channel doesn't care who the subscribers are or how many there are—it just broadcasts the update.
+
+Student's Objective:
+Implement the Observer Pattern:
+
+Channel = Subject
+Subscriber = Observer
+When a video is uploaded, all subscribed users are notified.
+
+Notifications should include channel name and video title.
+
+Input Format:
+First line: channelName
+
+Second line: Integer n – number of subscribers
+
+Next n lines: subscriber names
+
+Next line: Integer v – number of videos uploaded
+
+Next v lines: video titles
+
+Output Format:
+After each video upload:
+
+[ChannelName] uploaded: [VideoTitle]
+[SubscriberName]: New video from [ChannelName]! Watching now...
+[SubscriberName]: New video from [ChannelName]! Watching now...
+...
+
+For example:
+<img width="977" height="259" alt="image" src="https://github.com/user-attachments/assets/b1833fb9-0910-4a9a-914d-c3d0355e76f6" />
+
+
 
 ## AIM:
-   To create a Java program to perform final & static keyword for below situation Employee object contains member 'Emp_Id'. It contains object named name, which contains its own informations such as Fname, Mname, Lname.
- 
-## ALGORITHM :
-1.	Start the Program.
-2.	Define class `Name`:
--	a) Declare three `String` variables: `Fname`, `Mname`, and `Lname`
--	b) Define method `dispName(String fn, String mn, String ln)`:
--	i) Print the full name using the passed parameters `fn`, `mn`, and `ln`
-3.	Define class `Employee`:
--	a) Declare an integer variable `Emp_Id`
--	b) Create an instance of `Name` called `obj`
--	c) Define method `disp(int id)`:
--	i) Print the employee ID
--	ii) Create a new `Name` object and call `dispName("B", "Leo", "John")` to display the name
-4.	Define `Main` class with `main` method:
--	a) Create an `Employee` object `emp`
--	b) Call `emp.disp(101)` to display the employee details
-5.	End
+To write a Java program using the Observer Design Pattern where a YouTube channel (Subject) notifies all its subscribers (Observers) whenever a new video is uploaded.
 
+## ALGORITHM :
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Read the channel name from the user.
+4.	Create a Channel (Subject) object.
+5.	Read the number of subscribers n.
+6. For each subscriber:Read the subscriber name,Create a Subscriber object,Add it to the Channel using subscribe().
+7.	Read the number of videos v.
+8.	For each video:Read the video title,Call uploadVideo() which-Prints upload message,Notifies every subscriber.
+9.	Stop the program.
 
 
 
@@ -28,23 +65,88 @@
 ## PROGRAM:
  ```
 /*
-Program to implement a final & Static using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Composition Concepts in Java
+Developed by: JESLIN GNANASHEELA M
+RegisterNumber:  212222040062
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
 
 
+```
+import java.util.*;
 
+interface Observer {
+    void notify(String channelName, String videoTitle);
+}
+
+class Subscriber implements Observer {
+    private String name;
+
+    public Subscriber(String name) {
+        this.name = name;
+    }
+
+    public void notify(String channelName, String videoTitle) {
+        System.out.println(name + ": New video from " + channelName + "! Watch now...");
+    }
+}
+
+class Channel {
+    private String channelName;
+    private List<Observer> subscribers;
+
+    public Channel(String channelName) {
+        this.channelName = channelName;
+        this.subscribers = new ArrayList<>();
+    }
+
+    public void subscribe(Observer subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    public void uploadVideo(String videoTitle) {
+        System.out.println(channelName + " uploaded: " + videoTitle);
+        for (Observer sub : subscribers) {
+            sub.notify(channelName, videoTitle);
+        }
+    }
+}
+
+public class prog {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String channelName = sc.nextLine();
+        Channel channel = new Channel(channelName);
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            String sub = sc.nextLine();
+            channel.subscribe(new Subscriber(sub));
+        }
+        int v = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < v; i++) {
+            String title = sc.nextLine();
+            channel.uploadVideo(title);
+        }
+        sc.close();
+    }
+}
+
+```
 
 
 
 
 ## OUTPUT:
 
+<img width="1220" height="472" alt="image" src="https://github.com/user-attachments/assets/5afe579e-f12d-4f37-ad8a-7efa96a7503a" />
+
 
 
 ## RESULT:
-Thus, the java program to perform final & static keyword was executed successfully.
+
+The program successfully simulates a YouTube-like platform where a channel notifies its subscribers whenever a new video is uploaded.
+

@@ -1,20 +1,36 @@
-# Ex.No:1(B) VARIABLES AND OPERATOR
+# Ex.No:1(B) CONDITIONAL STATEMENT
+
+## QUESTION:
+A pirate ship has a code lock that only opens if:
+
+The input code is even, and
+
+If it is less than 100, say "Weak Code".
+
+If it is between 100 and 999, say "Strong Code".
+
+If the code is odd, deny access -"Access Denied".
+
+For example:
+
+<img width="536" height="139" alt="image" src="https://github.com/user-attachments/assets/59f560a3-e0fb-4a7a-8a40-75ac033edb26" />
+
+
 
 ## AIM:
-To write a Java program to get values of variables 'a' and 'b' and then check if both the conditions 'a < 50' and 'a < b' are true. [Class name is ‘Demo’]
+
+To write a Java program that checks whether the entered pirate code is valid and prints the correct message based on its value.
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	Define a class named 'Demo'
-4.	Implement the main method
-5.	Create a new instance of the 'Scanner' class named 'sc' to read user input
-6.	Read an integer 'a' from the user using the 'nextInt' method of 'sc'
-7.	Read another integer 'b' from the user using the 'nextInt' method of 'sc'
-8.	Check if 'a' is less than 50 or if 'a' is less than 'b'
-a)	If the condition is true, print "true" using the 'print' method of 'System.out'
-b)	If the condition is false, print "false" using the 'print' method of 'System.out'
-9.	End
+3.	Read the integer input code from the user.
+4.	Check if the number is even.
+5.	If even and less than 100, display “Weak Code”.
+6.	If even and between 100 and 999, display “Strong Code”.
+7.	Otherwise, display “Access Denied”.
+8.	If the number is odd, display “Access Denied”.
+9.	Stop the program.
 
 
 
@@ -23,23 +39,49 @@ b)	If the condition is false, print "false" using the 'print' method of 'System.
 ## PROGRAM:
  ```
 /*
-Program to implement a variable and operators using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a conditional statement using Java
+Developed by: JESLIN GNANASHEELA M
+RegisterNumber:  212222040062
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
+```
+import java.util.Scanner;
+
+public class PirateCodeLock {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int code = scanner.nextInt();
+
+        if (code % 2 == 0) { // Check if code is even
+            if (code < 100) {
+                System.out.println("Weak Code");
+            } else if (code >= 100 && code <= 999) {
+                System.out.println("Strong Code");
+            } else {
+                System.out.println("Access Denied"); 
+            }
+        } else {
+            System.out.println("Access Denied");
+        }
+
+        scanner.close();
+    }
+}
 
 
-
-
-
+```
 
 
 ## OUTPUT:
+<img width="1110" height="447" alt="image" src="https://github.com/user-attachments/assets/b33c5f6c-524f-453b-96a2-7bfe2b684b44" />
+
 
 
 
 ## RESULT:
-Thus, the Java program to get values of variables 'a' and 'b' and then check if both the conditions 'a < 50' and 'a < b' are true is created successfully.
+
+Thus, the program successfully evaluates the pirate code using conditional statements and displays the correct message based on the given rules.
+

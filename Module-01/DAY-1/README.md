@@ -1,41 +1,100 @@
-# Ex.No:1(A) CLASS & OBJECTS
+# Ex.No:1(A) INTRODUCTION TO JAVA PROGRAMMING, DATA TYPES, VARIABLES AND OPERATORS
+
+## QUESTION:
+Lovely wants to enter a secure tech conference. The security system checks certain conditions to grant access. These conditions are:
+
+She must be registered (true/false).
+
+She must have a valid ID (true/false).
+
+She must NOT be blacklisted (true/false).
+
+The system uses logical operators to evaluate her access eligibility:
+
+If she is registered AND has a valid ID, and NOT blacklisted, she is granted access.
+
+Otherwise, access is denied.
+
+Your task is to evaluate these conditions using logical operators and print whether access is granted or denied.
+
+Input Format:
+Three boolean values entered by the user (true or false):
+
+<isRegistered>
+<hasValidID>
+<isBlacklisted>
+Output Format:
+Access Granted: true/false
+
+For example:
+
+<img width="730" height="238" alt="image" src="https://github.com/user-attachments/assets/46cb804d-b149-4f8d-8317-c842796db671" />
+
+
 
 ## AIM:
-To create a class named 'Student' with String variable 'name' and String variable 'address'.
+To write a Java program that reads three boolean values and evaluates access permission using logical operators.
+
 
 ## ALGORITHM :
+
 1.	Start the program.
-2.	Define a class named 'Student'
-3.	Declare a String variable 'name' and initialize it with the value "John"
-4.	Declare a String variable 'address' and initialize it with the value "Chennai"
-5.	Define a class named 'Test'
-6.	Define the 'main' method within the 'Test' class
-7.	Create an object 'obj' of the 'Student' class
-8.	Print the value of 'name' and 'address' variables of the 'obj' object
-9.	End
+2. Create a Scanner object to read input.
+3. Read three boolean values- isRegistered, hasValidId, isBlacklisted.
+4. Compute access eligibility using:
+accessGranted = isRegistered && hasValidID && !isBlacklisted;
+5. Display the result: "Access Granted: " + access.
+6. Stop the program.
 
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a class & objects using Java
-Developed by: 
-RegisterNumber:  
+Program to implement variables and Operators using Java
+Developed by: JESLIN GNANASHEELA M
+RegisterNumber:  212222040062
 */
 ```
 
 ## Sourcecode.java:
 
+```
+import java.util.Scanner;
 
+public class AccessCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input boolean values
+        boolean isRegistered = sc.nextBoolean();
+        boolean hasValidID = sc.nextBoolean();
+        boolean isBlacklisted = sc.nextBoolean();
+
+        // Access condition
+        boolean accessGranted = isRegistered && hasValidID && !isBlacklisted;
+
+        // Output
+        System.out.println("Access Granted: " + accessGranted);
+    }
+}
+
+
+```
 
 
 
 
 
 ## OUTPUT:
+<img width="991" height="537" alt="image" src="https://github.com/user-attachments/assets/f6c1da53-d1fe-4152-8774-9af6b7d1ca0f" />
+
 
 
 
 ## RESULT:
-Thus, the class named 'Student' with String variable 'name' and String variable 'address' was created successfully.
+Thus, the program successfully evaluates access permission using logical operators and produces the correct output.
+
+
+
+

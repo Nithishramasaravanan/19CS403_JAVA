@@ -1,58 +1,35 @@
-# Ex.No:2(A) CLASS AND OBJECT
+# Ex.No:2(B) METHODS
 
 ## QUESTION:
+Write a class with one static method and one non-static method. Call both from the main() method.
 
-Create a class City with attributes: cityName (String), population (long), area (double). Create an object. Print all details.
+When staticMethod() is called, it should print  "I am static".
 
-```
-import java.util.Scanner;
-class City {
-
-    String cityName;
-    long population;
-    double area;
-
-    void printDetails() {
-           // Your Code Here
-    }
-}
-
-class prog {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-         // Your Code Here
-         scanner.close();
-    }
-}
-```
-
+When nonStaticMethod() is called, it should print  "I am non-static"
 
 For example:
-
-
-<img width="450" height="304" alt="image" src="https://github.com/user-attachments/assets/b207f2f2-3220-4eda-8983-0d7051c22eff" />
+<img width="485" height="163" alt="image" src="https://github.com/user-attachments/assets/bc088df5-b893-4c9f-8d24-3a7d706a7957" />
 
 
 ## AIM:
 
-To write a Java program that creates a City class, stores its details using an object, and prints all the attributes
+To write a Java program that demonstrates calling a static method and a non-static method from the main method.
 
 ## ALGORITHM :
 1.	Start the program.
-2.	Import the necessary package 'java.util'.
-3.	Create a class City with attributes: cityName, population, and area.
-4.	Define a method printDetails() to display the city information.
-5.	In the main method, read the city details as input from the user.
-6.	Create an object of the City class and assign the input values.
-7.	Call the printDetails() method to display the details.
-8.	Stop the program.
+2.	Create a class containing one static method and one non-static method.
+3.	In the static method, print “I am static”.
+4.	In the non-static method, print “I am non-static”.
+5.	From the main method, call the static method directly.
+6.	Create an object and call the non-static method.
+7.	Stop the program.
 
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Class and Objects using Java
+Program to implement a Methods using Java
 Developed by: JESLIN GNANASHEELA M
 RegisterNumber:  212222040062
 */
@@ -61,41 +38,29 @@ RegisterNumber:  212222040062
 ## SOURCE CODE:
 
 ```
-import java.util.Scanner;
+public class MyClass {
 
-class City {
-
-    String cityName;
-    long population;
-    double area;
-
-    // Method to print the details of the city
-    void printDetails() {
-        System.out.println("City Name: " + cityName);
-        System.out.println("Population: " + population);
-        System.out.println("Area: " + area);
+    // Static method
+    public static void staticMethod() {
+        System.out.println("I am static");
     }
-}
 
-public class Prog {  // Change class name from 'prog' to 'Prog'
+    // Non-static method
+    public void nonStaticMethod() {
+        System.out.println("I am non-static");
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        // Call the static method directly using the class name
 
-        // new City object
-        City city = new City();
+        MyClass.staticMethod();
+        
+        // Create an object to call the non-static method
 
-        //  input for city name, population, and area
-        city.cityName = scanner.nextLine(); 
-        city.population = scanner.nextLong(); 
-        city.area = scanner.nextDouble(); 
-
-        // Print the details of the city
-        city.printDetails();
-
-        scanner.close();
+        MyClass obj = new MyClass();
+        obj.nonStaticMethod();
     }
 }
-
 
 ```
 
@@ -103,11 +68,9 @@ public class Prog {  // Change class name from 'prog' to 'Prog'
 
 ## OUTPUT:
 
-<img width="845" height="537" alt="image" src="https://github.com/user-attachments/assets/125cab94-5509-4759-86d3-df3ba52bf316" />
+<img width="676" height="325" alt="image" src="https://github.com/user-attachments/assets/62b4a340-cdea-4381-926f-ded08d4617a5" />
 
 
 ## RESULT:
 
-The program successfully creates a City object and prints all its details.
-
-
+The program successfully calls both static and non-static methods and displays the expected output.

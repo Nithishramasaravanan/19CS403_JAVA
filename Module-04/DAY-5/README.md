@@ -1,51 +1,139 @@
-# Ex.No:4(E)  PARAMETERIZED CONSTRUCTOR
+# Ex.No:4(D) DESIGN PATTERN  ---- BEHAVIOUR PATTERN
+
+## QUESTION:
+Simulate a fan speed controller using the State Pattern. Each time the user types "next", change fan speed from Off -> Low -> Medium -> High -> Off.
+
+
+<img width="313" height="188" alt="image" src="https://github.com/user-attachments/assets/2b6481db-82bd-4512-b8ba-ac0a3734e6ea" />
+
+
+
 ## AIM:
-To write a parameterized constructor in the Employee class that initializes name and designation, and then call getter methods in the main() method of another class (Sample) to display the values.
+
+To simulate a fan speed controller using the State Pattern, where each press of "next" changes the fan speed in the sequence: Off → Low → Medium → High → Off.
 
 ## ALGORITHM :
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Define a FanState interface with methods handleRequest() and getStateName().
+4.	Implement concrete states: OffState, LowState, MediumState, and HighState. Each state changes to the next when handleRequest() is called
+5.	Create a FanContext class that maintains the current state of the fan.
+6.	On each "next" input from the user, call pressButton() to transition to the next state and display the current fan speed.
+7.	Exit the program when the user types "exit".
 
-	1.	Start the program.
-2.	Define a class Employee:
-    a.	  Declare two private string variables: name and designation.
-3.	Create a parameterized constructor in Employee:
-4.	Accept two parameters: name and designation.
-5.	Assign the parameters to the class fields.
-6.	Define two getter methods in the Employee class:
-     a.	getName() – returns the value of name.
-     b.	getDesg() – returns the value of designation.
-7.	Create another class Sample with the main method.
-8.	Inside the main method:
-     a.	Create an object of Employee using the constructor and pass "John" and "Asst.Manager" as arguments.
-     b.	Call getName() and store the result in a variable empName.
-     c.	Call getDesg() and store the result in a variable empDesg.
-9.	Print the values of empName and empDesg.
-10.	End the program
+   
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Parameterized Constructor Using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Behaviour Pattern using Java
+Developed by: JESLIN GNANAWSHEELA M
+RegisterNumber:  212222040062
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
 
 
+```
+import java.util.Scanner;
 
+// State interface
+interface FanState {
+    void handleRequest(FanContext ctx);
+    String getStateName();
+}
 
+// Concrete States
+class OffState implements FanState {
+    public void handleRequest(FanContext ctx) {
+        ctx.setState(new LowState());
+        System.out.println("Fan is on Low");
+    }
+    public String getStateName() {
+        return "Off";
+    }
+}
+
+class LowState implements FanState {
+    public void handleRequest(FanContext ctx) {
+        ctx.setState(new MediumState());
+        System.out.println("Fan is on Medium");
+    }
+    public String getStateName() {
+        return "Low";
+    }
+}
+
+class MediumState implements FanState {
+    public void handleRequest(FanContext ctx) {
+        ctx.setState(new HighState());
+        System.out.println("Fan is on High");
+    }
+    public String getStateName() {
+        return "Medium";
+    }
+}
+
+class HighState implements FanState {
+    public void handleRequest(FanContext ctx) {
+        ctx.setState(new OffState());
+        System.out.println("Fan is Off");
+    }
+    public String getStateName() {
+        return "High";
+    }
+}
+
+// Context
+class FanContext {
+    private FanState state;
+
+    public FanContext() {
+        state = new OffState();
+    }
+
+    public void setState(FanState state) {
+        this.state = state;
+    }
+
+    public void pressButton() {
+        state.handleRequest(this);
+    }
+}
+
+public class FanSpeedController {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        FanContext fan = new FanContext();
+        String input;
+
+        while (true) {
+            input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("next")) {
+                fan.pressButton();
+            } else if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+        }
+        sc.close();
+    }
+}
+
+```
 
 
 
 ## OUTPUT:
 
+<img width="679" height="583" alt="image" src="https://github.com/user-attachments/assets/38f8ce1b-222f-4e1a-ae32-d6581d76e30e" />
+
 
 
 ## RESULT:
-Thus, the  java program was successfully demonstrates the use of a parameterized constructor to initialize class fields.
 
- 
+Thus, the program successfully cycles the fan speed through Off → Low → Medium → High → Off each time "next" is entered, demonstrating the State Pattern in action.
 
 
